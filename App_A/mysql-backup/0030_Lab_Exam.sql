@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 14, 2022 at 05:45 PM
+-- Generation Time: Aug 15, 2022 at 08:29 AM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `0030_Lab_Exam`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `CUSTOMERS`
---
-
-CREATE TABLE `CUSTOMERS` (
-  `ID` int(11) NOT NULL,
-  `NAME` varchar(20) NOT NULL,
-  `AGE` int(11) NOT NULL,
-  `ADDRESS` char(25) DEFAULT NULL,
-  `SALARY` decimal(18,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,12 +87,6 @@ INSERT INTO `Movie` (`Movie_id`, `Name`, `Trailer_link`) VALUES
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `CUSTOMERS`
---
-ALTER TABLE `CUSTOMERS`
-  ADD PRIMARY KEY (`ID`,`NAME`);
 
 --
 -- Indexes for table `Hero`

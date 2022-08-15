@@ -13,12 +13,12 @@
         <div id='moviesDom'></div>
         <div>Developed by <a href="janista.html">Janista Sihirunwong</a></div>
         <script>
-            axios.defaults.baseURL = 'http://localhost:3000';
+            axios.defaults.baseURL = 'http://127.0.0.1:8082';
             let table = ""
             const onClickFunc = async(Hero_id) => {
                 let id = Hero_id;
                 localStorage.setItem('number', id);
-                location.href = "/frontend/hero.html";
+                location.href = "/App_A/frontend/hero.html";
             }
             const myFunc = async() => {
                 let res = await axios.get(`/`)

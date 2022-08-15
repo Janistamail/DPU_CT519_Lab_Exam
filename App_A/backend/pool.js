@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   user: "root",
   password: "root",
   database: "0030_Lab_Exam",
-  port: 8889,
+  port: 3306,
 });
 
 module.exports = pool;
