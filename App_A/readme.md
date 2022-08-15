@@ -14,6 +14,6 @@
 ### Frontend
 
 <p>1. เปิด http://127.0.0.1:5500/frontend/index.html เพื่อเช็คได้ผลตามรูป</p>
-<img src=""/>
-<img src=""/>
-<img src=""/>
+<img src="https://github.com/Janistamail/DPU_CT519_Lab_Exam/blob/main/App_A/backend/public/images/Screenshot%202565-08-15%20at%2012.31.34.png"/>
+<img src="https://github.com/Janistamail/DPU_CT519_Lab_Exam/blob/main/App_A/backend/public/images/Screenshot%202565-08-15%20at%2012.34.03.png"/>
+<img src="https://github.com/Janistamail/DPU_CT519_Lab_Exam/blob/main/App_A/backend/public/images/Screenshot%202565-08-15%20at%2012.34.12.png"/>
