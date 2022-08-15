@@ -1,0 +1,61 @@
+version: "3.9"
+services:
+  sv_web_exam:
+    container_name: web_exap
+    image: httpd
+    depends_on:
+      - sv_db_exam
+    restart: always
+    volumes:
+      - ./App_A/frontend:/usr/local/apache2/htdocs
+    ports:
+      - "8080:80"
+    expose:
+      - "8080"
+    networks:
+      app_net:
+        ipv4_address: 192.168.64.2
+
+  # sv_web_back_exam:
+  #   container_name: web_back_exam
+  #   image: node:16
+  #   depends_on:
+  #     - sv_db_exam
+  #   restart: always
+  #   volumes:
+  #     - ./App_A/backend:/usr/src/app
+  #   working_dir: /usr/src/app
+  #   # command: bash -c "npm install && npm install nodemon && npm install express && npm start"
+  #   ports:
+  #     - "8081:80"
+  #   expose:
+  #     - "8081"
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 192.168.64.3
+
+  sv_db_exam:
+    image: mysql:5.6
+    volumes:
+      - ./App_A/mysql-backup:/docker-entrypoint-initdb.d/0030_database.sql:ro
+    container_name: db_exam
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: 0030_Lab_Exam
+      MYSQL_USER: janista
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    networks:
+      app_net:
+        ipv4_address: 192.168.64.4
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.64.0/24
+          gateway: 192.168.64.1

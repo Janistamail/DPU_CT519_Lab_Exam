@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title </head>
+
+    <body>
+        <h1>Title การแสดงรายชื่อ Hero โดย Janista Sihirunwong รหัส 645162010030</h1>
+        <div id='moviesDom'></div>
+        <div>Developed by <a href="janista.html">Janista Sihirunwong</a></div>
+        <script>
+            axios.defaults.baseURL = 'http://localhost:3000';
+            let table = ""
+            const onClickFunc = async(Hero_id) => {
+                let id = Hero_id;
+                localStorage.setItem('number', id);
+                location.href = "/frontend/hero.html";
+            }
+            const myFunc = async() => {
+                let res = await axios.get(`/`)
+                console.log(res)
+                table = `<table>
+                                    <tr>
+                                    <th>Hero Name</th>
+                                    <th>Picture</th>
+                                    </tr>`
+                if (res) {
+                    table += res.data.map(x => (`
+
+                <tr>
+                    <td><div onclick="onClickFunc(${x.Hero_id})">${x.Name}<div></td>
+                    <td><div onclick="onClickFunc(${x.Hero_id})"><img width="200px" height="200px" src="${x.Picture_link}"/></div></td>
+                </tr>
+
+                `))
+                }
+                table += `</table>`
+                console.log(table)
+                document.getElementById('moviesDom').innerHTML = table;
+
+
+            }
+            myFunc();
+        </script>
+    </body>
+
+</html>

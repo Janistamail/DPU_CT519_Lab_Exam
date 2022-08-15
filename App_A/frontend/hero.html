@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="hero"></div>
+    <script>
+        axios.defaults.baseURL = "http://localhost:3000";
+        let data = ``;
+
+        const queryData = async() => {
+            let id = localStorage.getItem("number");
+            let res = await axios.get(`/movies/selectHero/${id}`);
+            console.log(res.data[0][0].Name);
+            console.log(res.data[1][0]);
+
+            if (res.data) {
+                const splitData = res.data[1][0].Name.split(",");
+                const splitLink = res.data[1][0].Trailer_link.split(",");
+
+                // console.log("splitData", splitData);
+                data = `<h1>Title รายละเอียดของ ${res.data[0][0].Name} โดย Janista Sihirunwong รหัส 645162010030</h1>
+                <img width="200px" height="200px" src="${res.data[0][0].Picture_link}"/>
+                <p>รายละเอียด Hero : ${res.data[0][0].Detail}</p>
+                <p>ปรากฎในภาพยนตร์   :<a href=${splitLink[0]}> ${splitData[0]} </a></p>
+                <p>ปรากฎในภาพยนตร์   :<a href=${splitLink[1]}> ${splitData[1]}</a></p>               
+                `;
+            }
+
+            document.getElementById("hero").innerHTML = data;
+        };
+        queryData();
+    </script>
+</body>
+
+</html>
